@@ -1,0 +1,73 @@
+{
+  "repo": "silver-trade-fills-gate",
+  "language": "Zig",
+  "category": "Trading systems",
+  "goal": "Design a Zig verification harness for fills systems, covering resource planning, capacity fixtures, and failure-oriented tests.",
+  "review_model": {
+    "terms": [
+      "spread pressure",
+      "fill risk",
+      "portfolio drift",
+      "quote width"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "spread pressure",
+      "signal": 52,
+      "slack": 27,
+      "drag": 19,
+      "confidence": 52,
+      "score": 126,
+      "lane": "watch"
+    },
+    {
+      "name": "stress",
+      "focus": "fill risk",
+      "signal": 49,
+      "slack": 33,
+      "drag": 22,
+      "confidence": 84,
+      "score": 149,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "portfolio drift",
+      "signal": 46,
+      "slack": 53,
+      "drag": 30,
+      "confidence": 92,
+      "score": 147,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "quote width",
+      "signal": 69,
+      "slack": 54,
+      "drag": 32,
+      "confidence": 94,
+      "score": 190,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "spread pressure",
+      "signal": 85,
+      "slack": 50,
+      "drag": 28,
+      "confidence": 94,
+      "score": 230,
+      "lane": "ship"
+    }
+  ]
+}
